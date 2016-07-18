@@ -1,5 +1,5 @@
 {
-  "name": "mctekk/oauth1-client",
+  "name": "league/oauth1-client",
   "description": "OAuth 1.0 Client Library",
   "license": "MIT",
   "require": {
