@@ -32,6 +32,8 @@ class TokenCredentials extends Credentials
      */
     public static function createFromResponse(ResponseInterface $response)
     {
+        $responseType = $response->getHeaders()['Content-Type'][0];
+
         switch ($responseType) {
             case 'application/json':
                 $data = json_decode((string) $response->getBody(), true);
