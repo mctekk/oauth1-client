@@ -32,7 +32,14 @@ class TokenCredentials extends Credentials
      */
     public static function createFromResponse(ResponseInterface $response)
     {
-        parse_str($response->getBody(), $data);
+        switch ($responseType) {
+            case 'application/json':
+                $data = json_decode((string) $response->getBody(), true);
+                break;
+            default:
+                parse_str($response->getBody(), $data);
+                break;
+        }
 
         if (!$data || !is_array($data)) {
             throw CredentialsException::responseParseError('token');
