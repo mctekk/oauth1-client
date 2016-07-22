@@ -59,6 +59,9 @@ class HmacSha1Signature extends AbstractSignature implements Signature
         $data = [];
         parse_str($urlParts['query'], $query);
         foreach (array_merge($query, $parameters) as $key => $value) {
+            if (empty($value)) {
+                continue;
+            }
             $data[rawurlencode($key)] = rawurlencode($value);
         }
 
